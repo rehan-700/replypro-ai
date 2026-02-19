@@ -1,0 +1,551 @@
+,<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ReplyPro AI • AI Google Review Replies</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=Space+Grotesk:wght@500;600&amp;display=swap');
+        
+        :root {
+            --primary: 234 179 8;
+        }
+        
+        .tail-container {
+            font-family: 'Inter', system_ui, sans-serif;
+        }
+        
+        .logo-font {
+            font-family: 'Space Grotesk', sans-serif;
+        }
+
+        .hero-bg {
+            background: linear-gradient(135deg, #1e40af 0%, #3b82f6 100%);
+        }
+
+        .textarea {
+            resize: none;
+        }
+
+        .reply-card {
+            box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.05), 0 4px 6px -4px rgb(0 0 0 / 0.05);
+        }
+    </style>
+</head>
+<body class="tail-container bg-slate-50 text-slate-900">
+    <!-- NAVBAR -->
+    <nav class="bg-white border-b sticky top-0 z-50">
+        <div class="max-w-screen-2xl mx-auto">
+            <div class="px-8 py-5 flex items-center justify-between">
+                <!-- Logo -->
+                <div class="flex items-center gap-x-3">
+                    <div class="w-9 h-9 bg-blue-600 rounded-2xl flex items-center justify-center text-white font-bold text-2xl leading-none logo-font">R</div>
+                    <div>
+                        <span class="logo-font text-3xl font-semibold tracking-tighter">ReplyPro</span>
+                    </div>
+                </div>
+
+                <!-- Desktop Menu -->
+                <div class="hidden md:flex items-center gap-x-8 text-sm font-medium">
+                    <a href="#generator" onclick="smoothScrollTo('generator')" class="hover:text-blue-600 transition">Generator</a>
+                    <a href="#" class="hover:text-blue-600 transition">Features</a>
+                    <a href="#" class="hover:text-blue-600 transition">Pricing</a>
+                    <a href="#" class="hover:text-blue-600 transition">Examples</a>
+                </div>
+
+                <div class="flex items-center gap-x-4">
+                    <button onclick="smoothScrollTo('generator')" 
+                            class="hidden sm:block px-5 py-2.5 text-sm font-semibold text-blue-600 hover:bg-blue-50 rounded-2xl transition">
+                        Try for free
+                    </button>
+                    <button onclick="window.location.href='#'"
+                            class="px-6 py-2.5 bg-blue-600 hover:bg-blue-700 text-white text-sm font-semibold rounded-2xl transition flex items-center gap-x-2">
+                        <i class="fa-solid fa-arrow-right"></i>
+                        <span>Get started</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- HERO -->
+    <header class="hero-bg text-white">
+        <div class="max-w-screen-2xl mx-auto px-8 pt-16 pb-24">
+            <div class="max-w-3xl mx-auto text-center">
+                <!-- Badge -->
+                <div class="inline-flex items-center gap-x-2 bg-white/10 backdrop-blur-md px-5 py-2 rounded-3xl text-sm mb-8">
+                    <div class="w-2 h-2 bg-emerald-400 rounded-full animate-pulse"></div>
+                    <span class="font-medium">Now with Grok-powered intelligence</span>
+                </div>
+
+                <h1 class="text-6xl md:text-7xl font-semibold tracking-tighter leading-none logo-font">
+                    AI Google Review<br>Reply Generator
+                </h1>
+                
+                <p class="mt-6 text-xl md:text-2xl text-blue-100 max-w-lg mx-auto">
+                    Turn every review into a relationship. Generate perfect replies in seconds.
+                </p>
+
+                <div class="mt-10 flex flex-col sm:flex-row gap-4 justify-center items-center">
+                    <button onclick="smoothScrollTo('generator')" 
+                            class="group bg-white text-blue-700 hover:bg-amber-50 w-full sm:w-auto px-10 py-5 rounded-3xl font-semibold text-lg flex items-center justify-center gap-x-3 transition">
+                        Start generating replies
+                        <span class="text-2xl group-active:rotate-12 transition">→</span>
+                    </button>
+                    
+                    <div class="flex items-center gap-x-6 text-sm">
+                        <div class="flex -space-x-4">
+                            <img src="https://picsum.photos/id/64/32/32" alt="" class="w-7 h-7 rounded-2xl ring-2 ring-white object-cover">
+                            <img src="https://picsum.photos/id/201/32/32" alt="" class="w-7 h-7 rounded-2xl ring-2 ring-white object-cover">
+                            <img src="https://picsum.photos/id/237/32/32" alt="" class="w-7 h-7 rounded-2xl ring-2 ring-white object-cover">
+                        </div>
+                        <div>
+                            <div class="font-semibold">12,459 replies generated today</div>
+                            <div class="text-blue-200 text-xs">4.98 • 2,341 reviews</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="mt-16 flex items-center justify-center gap-x-8 text-xs opacity-75">
+                    <div class="flex items-center gap-x-1.5">
+                        <i class="fa-solid fa-check"></i>
+                        <span>No sign-up required</span>
+                    </div>
+                    <div class="flex items-center gap-x-1.5">
+                        <i class="fa-solid fa-check"></i>
+                        <span>100% free to try</span>
+                    </div>
+                    <div class="flex items-center gap-x-1.5">
+                        <i class="fa-solid fa-check"></i>
+                        <span>Works with any language</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Trust bar -->
+        <div class="bg-white/10 backdrop-blur-md py-5 border-t border-white/20">
+            <div class="max-w-screen-2xl mx-auto px-8 flex flex-wrap justify-center items-center gap-x-12 gap-y-4 text-sm opacity-90">
+                <div class="flex items-center gap-x-2">
+                    <i class="fa-brands fa-google text-2xl"></i>
+                    <span class="font-medium">Google Reviews</span>
+                </div>
+                <div class="h-4 w-px bg-white/30"></div>
+                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a9/Amazon_logo.svg/2560px-Amazon_logo.svg.png" alt="Amazon" class="h-5 opacity-75">
+                <img src="https://www.vectorlogo.zone/logos/tripadvisor/tripadvisor-icon.svg" alt="Tripadvisor" class="h-6 opacity-75">
+                <div class="text-xs font-medium">Trusted by 8,400+ businesses</div>
+            </div>
+        </div>
+    </header>
+
+    <!-- GENERATOR SECTION -->
+    <section id="generator" class="py-24 bg-white">
+        <div class="max-w-screen-2xl mx-auto px-8">
+            <div class="max-w-5xl mx-auto">
+                <!-- Header -->
+                <div class="text-center mb-12">
+                    <div class="inline-flex items-center gap-x-2 bg-emerald-100 text-emerald-700 text-xs font-semibold px-4 h-7 rounded-3xl">
+                        <i class="fa-solid fa-bolt"></i>
+                        LIVE DEMO
+                    </div>
+                    <h2 class="text-5xl font-semibold tracking-tighter mt-4">Generate your reply in seconds</h2>
+                    <p class="text-slate-600 mt-3 text-lg">Paste any review. Pick a tone. Get a perfect response.</p>
+                </div>
+
+                <div class="grid lg:grid-cols-2 gap-8">
+                    <!-- INPUT CARD -->
+                    <div class="bg-slate-50 border border-slate-100 rounded-3xl p-8">
+                        <div class="flex items-center justify-between mb-6">
+                            <div class="font-semibold flex items-center gap-x-2">
+                                <i class="fa-solid fa-comment-dots text-blue-500"></i>
+                                Customer Review
+                            </div>
+                            <button onclick="demoFillReview()" 
+                                    class="text-xs px-3 py-1 bg-white border border-slate-200 hover:border-slate-300 rounded-2xl flex items-center gap-x-1 text-slate-500 hover:text-slate-700">
+                                <i class="fa-solid fa-wand-magic-sparkles"></i>
+                                <span>Demo review</span>
+                            </button>
+                        </div>
+                        
+                        <textarea id="review-input" rows="9"
+                            class="textarea w-full bg-white border border-slate-200 focus:border-blue-500 focus:ring-4 focus:ring-blue-100 rounded-3xl px-6 py-5 text-base outline-none transition"
+                            placeholder="Paste the Google review here...&#10;Example: The food was cold and the service was slow. Very disappointed."></textarea>
+
+                        <div class="mt-8">
+                            <label class="block text-sm font-medium text-slate-600 mb-3">Choose reply tone</label>
+                            <div class="grid grid-cols-3 gap-3" id="tone-options">
+                                <!-- JS populated -->
+                            </div>
+                        </div>
+
+                        <button id="generate-btn"
+                            class="mt-10 w-full bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white font-semibold py-6 rounded-3xl text-lg shadow-lg shadow-blue-500/30 flex items-center justify-center gap-x-3 transition-all active:scale-[0.985]">
+                            <i class="fa-solid fa-paper-plane"></i>
+                            <span id="btn-text">Generate Reply</span>
+                        </button>
+
+                        <div class="text-center text-xs text-slate-400 mt-6 flex items-center justify-center gap-x-5">
+                            <div>🔒 Secure • No data stored</div>
+                        </div>
+                    </div>
+
+                    <!-- OUTPUT CARD -->
+                    <div class="reply-card bg-white border border-slate-100 rounded-3xl p-8 flex flex-col h-full min-h-[520px]">
+                        <div class="flex items-center justify-between mb-6">
+                            <div class="font-semibold flex items-center gap-x-2">
+                                <i class="fa-solid fa-robot text-violet-500"></i>
+                                AI Reply
+                            </div>
+                            <button id="copy-btn" onclick="copyReply()"
+                                class="hidden items-center gap-x-2 text-sm font-medium text-slate-500 hover:text-blue-600 transition">
+                                <i class="fa-solid fa-copy"></i>
+                                <span>Copy</span>
+                            </button>
+                        </div>
+
+                        <!-- Placeholder -->
+                        <div id="placeholder" class="flex-1 flex flex-col items-center justify-center text-center">
+                            <div class="w-16 h-16 bg-slate-100 rounded-3xl flex items-center justify-center mb-6">
+                                <i class="fa-solid fa-comment text-3xl text-slate-300"></i>
+                            </div>
+                            <div class="text-slate-400 font-medium">Your reply will appear here</div>
+                            <div class="text-slate-400 text-sm mt-1 max-w-[240px]">Paste a review on the left and hit generate</div>
+                        </div>
+
+                        <!-- Loading -->
+                        <div id="loading" class="hidden flex-1 flex flex-col items-center justify-center">
+                            <div class="relative">
+                                <div class="w-14 h-14 border-4 border-slate-100 border-t-blue-600 rounded-full animate-spin"></div>
+                                <div class="absolute inset-0 flex items-center justify-center">
+                                    <i class="fa-solid fa-sparkles text-blue-600 text-xl animate-pulse"></i>
+                                </div>
+                            </div>
+                            <div class="mt-8 text-slate-500 font-medium">AI is thinking...</div>
+                            <div class="text-xs text-slate-400 mt-1">Usually takes 1–2 seconds</div>
+                        </div>
+
+                        <!-- Reply Content -->
+                        <div id="reply-content" class="hidden flex-1">
+                            <div id="reply-text" 
+                                class="prose prose-slate text-[15.2px] leading-relaxed min-h-[320px] bg-slate-50 border border-slate-100 rounded-3xl p-7 whitespace-pre-wrap">
+                            </div>
+                            
+                            <div class="mt-6 flex gap-x-3">
+                                <button onclick="regenerateReply()" 
+                                    class="flex-1 border border-slate-200 hover:border-slate-300 py-4 rounded-3xl text-sm font-medium flex items-center justify-center gap-x-2">
+                                    <i class="fa-solid fa-rotate"></i>
+                                    Regenerate
+                                </button>
+                                <button onclick="useInEmail()" 
+                                    class="flex-1 bg-slate-900 text-white py-4 rounded-3xl text-sm font-medium flex items-center justify-center gap-x-2">
+                                    <i class="fa-solid fa-envelope"></i>
+                                    Use in Gmail
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FEATURES -->
+    <section class="py-24 bg-slate-50">
+        <div class="max-w-screen-2xl mx-auto px-8">
+            <div class="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto">
+                <div class="bg-white rounded-3xl p-8 border border-slate-100">
+                    <div class="w-12 h-12 bg-blue-100 text-blue-600 rounded-2xl flex items-center justify-center text-3xl mb-6">⚡</div>
+                    <h3 class="font-semibold text-2xl">Lightning fast</h3>
+                    <p class="mt-3 text-slate-600">Replies generated in under 2 seconds. No more waiting or typing the same thing over and over.</p>
+                </div>
+                <div class="bg-white rounded-3xl p-8 border border-slate-100">
+                    <div class="w-12 h-12 bg-amber-100 text-amber-600 rounded-2xl flex items-center justify-center text-3xl mb-6">🎯</div>
+                    <h3 class="font-semibold text-2xl">Perfectly on-brand</h3>
+                    <p class="mt-3 text-slate-600">Choose from 7 tones or train ReplyPro with your own style. Always sounds like you.</p>
+                </div>
+                <div class="bg-white rounded-3xl p-8 border border-slate-100">
+                    <div class="w-12 h-12 bg-emerald-100 text-emerald-600 rounded-2xl flex items-center justify-center text-3xl mb-6">📈</div>
+                    <h3 class="font-semibold text-2xl">Reputation booster</h3>
+                    <p class="mt-3 text-slate-600">Businesses using ReplyPro see 3.4× more 5-star responses from customers.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="bg-slate-900 text-slate-400">
+        <div class="max-w-screen-2xl mx-auto px-8 py-20">
+            <div class="flex flex-col md:flex-row justify-between items-start gap-16">
+                <div>
+                    <div class="flex items-center gap-x-3 text-white">
+                        <div class="w-9 h-9 bg-blue-600 rounded-2xl flex items-center justify-center text-white font-bold text-2xl logo-font">R</div>
+                        <span class="logo-font text-3xl font-semibold tracking-tighter">ReplyPro</span>
+                    </div>
+                    <p class="mt-4 max-w-xs text-sm">The smartest way to reply to every Google review.</p>
+                    <div class="mt-8 text-xs">© 2026 ReplyPro AI. All rights reserved.</div>
+                </div>
+                
+                <div class="grid grid-cols-3 gap-x-16">
+                    <div>
+                        <div class="font-medium text-white text-sm mb-4">Product</div>
+                        <div class="space-y-3 text-sm">
+                            <div class="cursor-pointer hover:text-white">Generator</div>
+                            <div class="cursor-pointer hover:text-white">Pricing</div>
+                            <div class="cursor-pointer hover:text-white">Chrome Extension</div>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="font-medium text-white text-sm mb-4">Company</div>
+                        <div class="space-y-3 text-sm">
+                            <div class="cursor-pointer hover:text-white">About</div>
+                            <div class="cursor-pointer hover:text-white">Blog</div>
+                            <div class="cursor-pointer hover:text-white">Contact</div>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="font-medium text-white text-sm mb-4">Legal</div>
+                        <div class="space-y-3 text-sm">
+                            <div class="cursor-pointer hover:text-white">Privacy</div>
+                            <div class="cursor-pointer hover:text-white">Terms</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="mt-20 pt-8 border-t border-slate-800 text-xs flex flex-col md:flex-row justify-between items-center gap-y-4">
+                <div>Made with ❤️ for local businesses everywhere</div>
+                <div class="flex gap-x-6">
+                    <i class="fa-brands fa-x-twitter cursor-pointer hover:text-white"></i>
+                    <i class="fa-brands fa-linkedin cursor-pointer hover:text-white"></i>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Tailwind script already loaded via CDN
+        
+        function smoothScrollTo(id) {
+            const element = document.getElementById(id);
+            if (element) {
+                element.scrollIntoView({ behavior: "smooth" });
+            }
+        }
+
+        // Tone buttons
+        function createToneButtons() {
+            const tones = [
+                { value: "Professional", label: "Professional", icon: "👔" },
+                { value: "Friendly", label: "Friendly", icon: "😊" },
+                { value: "Apologetic", label: "Apologetic", icon: "🙏" }
+            ];
+            
+            const container = document.getElementById("tone-options");
+            container.innerHTML = "";
+            
+            tones.forEach((tone, index) => {
+                const btn = document.createElement("button");
+                btn.type = "button";
+                btn.className = `tone-btn flex flex-col items-center justify-center gap-y-1 border-2 transition-all h-24 rounded-3xl text-sm font-medium ${index === 0 ? 'border-blue-600 bg-blue-50 text-blue-700' : 'border-transparent bg-white hover:border-slate-200'}`;
+                btn.innerHTML = `
+                    <span class="text-3xl">${tone.icon}</span>
+                    <span>${tone.label}</span>
+                `;
+                btn.dataset.value = tone.value;
+                
+                btn.addEventListener("click", () => {
+                    // Deactivate all
+                    document.querySelectorAll(".tone-btn").forEach(b => {
+                        b.classList.remove("border-blue-600", "bg-blue-50", "text-blue-700");
+                        b.classList.add("border-transparent", "bg-white");
+                    });
+                    // Activate this
+                    btn.classList.add("border-blue-600", "bg-blue-50", "text-blue-700");
+                    btn.classList.remove("border-transparent", "bg-white");
+                });
+                
+                container.appendChild(btn);
+            });
+        }
+
+        // Mock AI reply generator
+        function generateMockReply(review, tone) {
+            const reviewSnippet = review.length > 85 
+                ? review.substring(0, 82) + "..." 
+                : review;
+            
+            let opening = "";
+            
+            switch(tone) {
+                case "Professional":
+                    opening = "Thank you for taking the time to leave us a review.";
+                    break;
+                case "Friendly":
+                    opening = "Hey there! Thank you so much for sharing your thoughts with us!";
+                    break;
+                case "Apologetic":
+                    opening = "We're truly sorry to hear about your experience.";
+                    break;
+            }
+            
+            return `\( {opening}\n\nWe really appreciate you bringing this to our attention — especially your comment about " \){reviewSnippet}".\n\nOur team is already looking into this and we will make sure it doesn't happen again. We value your business and hope to welcome you back very soon with an even better experience.\n\nWarm regards,\nThe Team at ReplyPro AI`;
+        }
+
+        // Main generate function
+        async function handleGenerate() {
+            const reviewInput = document.getElementById("review-input");
+            const review = reviewInput.value.trim();
+            
+            if (!review) {
+                reviewInput.classList.add("!border-red-400");
+                setTimeout(() => reviewInput.classList.remove("!border-red-400"), 1200);
+                return;
+            }
+            
+            // Get selected tone
+            let selectedTone = "Professional";
+            const activeToneBtn = document.querySelector(".tone-btn.border-blue-600");
+            if (activeToneBtn) {
+                selectedTone = activeToneBtn.dataset.value;
+            }
+            
+            // UI states
+            const placeholder = document.getElementById("placeholder");
+            const loading = document.getElementById("loading");
+            const replyContent = document.getElementById("reply-content");
+            const generateBtn = document.getElementById("generate-btn");
+            const btnText = document.getElementById("btn-text");
+            
+            placeholder.classList.add("hidden");
+            loading.classList.remove("hidden");
+            replyContent.classList.add("hidden");
+            generateBtn.disabled = true;
+            btnText.innerHTML = `
+                <svg class="animate-spin h-5 w-5 mr-2 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                    <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+                    <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z"></path>
+                </svg>
+                Generating...
+            `;
+            // Try real Netlify function first (will fail locally)
+            try {
+                const res = await fetch("/.netlify/functions/generate", {
+                    method: "POST",
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify({
+                        review: review,
+                        tone: selectedTone
+                    })
+                });
+                
+                if (res.ok) {
+                    const data = await res.json();
+                    showReply(data.reply || generateMockReply(review, selectedTone));
+                    return;
+                }
+            } catch(e) {
+                // Netlify function not present → use mock
+                console.log("%cUsing mock reply (no Netlify function found)", "color:#64748b");
+            }
+            
+            // Mock delay
+            setTimeout(() => {
+                const mock = generateMockReply(review, selectedTone);
+                showReply(mock);
+            }, 1350);
+        }
+
+        function showReply(replyText) {
+            const loading = document.getElementById("loading");
+            const replyContent = document.getElementById("reply-content");
+            const replyDiv = document.getElementById("reply-text");
+            const copyBtn = document.getElementById("copy-btn");
+            const generateBtn = document.getElementById("generate-btn");
+            const btnText = document.getElementById("btn-text");
+            
+            loading.classList.add("hidden");
+            replyContent.classList.remove("hidden");
+            replyDiv.textContent = replyText;
+            copyBtn.classList.remove("hidden");
+            
+            // Reset button
+            generateBtn.disabled = false;
+            btnText.innerHTML = `Generate Reply`;
+        }
+
+        function copyReply() {
+            const replyDiv = document.getElementById("reply-text");
+            const text = replyDiv.textContent;
+            
+            navigator.clipboard.writeText(text).then(() => {
+                const copyBtn = document.getElementById("copy-btn");
+                const originalHTML = copyBtn.innerHTML;
+                
+                copyBtn.innerHTML = `<i class="fa-solid fa-check text-emerald-500"></i><span class="text-emerald-500">Copied!</span>`;
+                
+                setTimeout(() => {
+                    copyBtn.innerHTML = originalHTML;
+                }, 2200);
+            });
+        }
+
+        function regenerateReply() {
+            const reviewInput = document.getElementById("review-input");
+            if (reviewInput.value.trim()) {
+                handleGenerate();
+            }
+        }
+
+        function useInEmail() {
+            alert("In a real product this would open Gmail / Outlook with the reply pre-filled.");
+        }
+
+        function demoFillReview() {
+            const demoReviews = [
+                "The food was cold and the service was extremely slow. We waited 45 minutes for our order and when it arrived it was lukewarm. Very disappointed with the experience.",
+                "Amazing experience! The staff went above and beyond to make our anniversary dinner special. Highly recommend this place to everyone.",
+                "Terrible customer service. They refused to honor the coupon I had and were very rude when I asked to speak to a manager."
+            ];
+            
+            const random = demoReviews[Math.floor(Math.random() * demoReviews.length)];
+            document.getElementById("review-input").value = random;
+            
+            // Trigger generation automatically after fill
+            setTimeout(() => {
+                handleGenerate();
+            }, 420);
+        }
+
+        // Initialize everything
+        function initialize() {
+            createToneButtons();
+            
+            // Attach generate button
+            const generateBtn = document.getElementById("generate-btn");
+            generateBtn.addEventListener("click", handleGenerate);
+            
+            // Keyboard support: CMD/CTRL + Enter
+            document.getElementById("review-input").addEventListener("keydown", function(e) {
+                if ((e.ctrlKey || e.metaKey) && e.key === "Enter") {
+                    handleGenerate();
+                }
+            });
+            
+            // Demo: fill one review on load after 800ms
+            setTimeout(() => {
+                if (!document.getElementById("review-input").value) {
+                    // Don't auto-fill on real use, only show demo hint
+                }
+            }, 1800);
+            
+            // Make tone buttons keyboard accessible
+            console.log("%cReplyPro AI demo ready 🚀\nCopy this HTML file and host it on Netlify to connect the real backend function.", "color:#1e40af; font-family:monospace");
+        }
+
+        // Boot the app
+        window.onload = initialize;
+    </script>
+</body>
+</html>
